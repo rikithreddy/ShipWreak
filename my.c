@@ -66,7 +66,7 @@ int comb(int n , int k)
 int sum= factorial(n);
 sum/=factorial(n-k);
 sum/=factorial(k);
-//printf("%d-sum\n",sum);
+ //printf("%d-sum\n",sum);
 return sum;
 }
 
@@ -167,10 +167,10 @@ int i;
 int b=1;
 for(i=0;i<numEnemys;i++)
 {
-en[i].dir=b;
-b=b*-1;
-en[i].x=((i+1)*869) % 1000;
-en[i].y=((i+1)*789) % 1000;
+en[i].dir=-1;
+
+en[i].x=(int)(rand()) % 1000;
+en[i].y=(int)(rand()) % (int) winYMax;
 }
 
 }
@@ -269,12 +269,10 @@ for(i=0;i<numEnemys;i++)
 
    en[i].y += en[i].dir*enemySpeed;
    // Check if the ball exceeds the edges
-   if (en[i].y > enYMax) {
+    if (en[i].y < enYMin) {
       en[i].y = enYMax;
-      en[i].dir = -en[i].dir;
-   } else if (en[i].y < enYMin) {
-      en[i].y = enYMin;
-      en[i].dir = -en[i].dir;
+      en[i].x = rand() %1000;
+
 
    }
 }
@@ -477,7 +475,7 @@ void checkCollision()
 	sink=1;  
 
      if(sink==1)
-    	shipY-=5;
+    	shipY-=1;
 
 
 
