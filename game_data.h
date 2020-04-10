@@ -23,15 +23,15 @@ float shipXMax, shipXMin, shipYMax, shipYMin;
 float enYMax=750, enYMin=250; 
 float xSpeed = 0;      
 float ySpeed = 0;
-float enemySpeed=30;
+float enemySpeed=20;
 float enemyHeight=30;
 float enemyWidth=5;
 float sunRadius=300;
 int numEnemys=3;
 struct enemys {
-float x;
-float y;
-int dir;
+    float x;
+    float y;
+    int direction;
 };
 
 struct point {

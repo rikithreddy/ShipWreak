@@ -50,9 +50,9 @@ void drawSmoke()
 void initEnemy()
 {
    int i;
-   for(i=0;i<numEnemys;i++)
+   for(i=0; i<numEnemys; i++)
    {
-      en[i].dir=-1;
+      en[i].direction = -1;
       en[i].x=(int)(rand()) % 1000;
       en[i].y=(int)(rand()) % (int) winYMax;
    }
@@ -123,7 +123,7 @@ void moveEn()
    int i;
    for(i=0;i<numEnemys;i++)
    {
-      en[i].y += en[i].dir*enemySpeed;
+      en[i].y += en[i].direction * enemySpeed;
       // Check if the ball exceeds the edges
       if (en[i].y < enYMin) {
          en[i].y = enYMax;
@@ -134,16 +134,6 @@ void moveEn()
 
 void drawShip(float x1, float y1)
 {			
-/*
-   glBegin(GL_POLYGON);            
-   glColor3f(1.0f, 0.8f, 1.0f); // Red
-   glVertex2f(x1-shipWidth/2,y1-shipHeight/2);
-   glVertex2f(x1+shipWidth/2,y1-shipHeight/2);
-   glVertex2f(x1+shipWidth/2,y1+shipHeight/2);
-   glVertex2f(x1-shipWidth/2,y1+shipHeight/2);
-   glEnd();
-*/
-
    //container 2			
    glBegin(GL_POLYGON);            
    glColor3f(1.0f, 0.3f, 0.2f); // Red
@@ -201,7 +191,8 @@ void drawShip(float x1, float y1)
 
    if(sink!=1)
    {
-      p1[0].x=shipX;//+shipWidth/2;
+
+      p1[0].x=shipX;
       p1[0].y=shipY+shipHeight/2;
       p1[1].x=shipX;
       p1[1].y=shipY+g*30+shipHeight/2+30;
@@ -212,11 +203,9 @@ void drawShip(float x1, float y1)
       p1[4].x=shipX-60;
       p1[4].y=shipY+30+shipHeight/2;
       drawSmoke();
-      float shX=x1-shipWidth*.1-shipWidth*.02;
+      float shX = x1-shipWidth*.1-shipWidth*.02;
 
-
-
-      p1[0].x=shX;//+shipWidth/2;
+      p1[0].x = shX;//+shipWidth/2;
       p1[0].y=shipY+shipHeight/2;
       p1[1].x=shX;
       p1[1].y=shipY+g*30+shipHeight/2+30;
