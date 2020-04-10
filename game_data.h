@@ -20,14 +20,10 @@ float winXMax=999;
 float winYMax=300;
 float ballRadius = 40	;   
 float shipXMax, shipXMin, shipYMax, shipYMin; 
-float enYMax=750, enYMin=250; 
 float xSpeed = 0;      
 float ySpeed = 0;
-float enemySpeed=20;
-float enemyHeight=30;
-float enemyWidth=5;
-float sunRadius=300;
-int numEnemys=3;
+
+float sunRadius=250;
 struct enemys {
     float x;
     float y;

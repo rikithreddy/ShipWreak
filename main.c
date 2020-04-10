@@ -4,6 +4,7 @@
 
 #include "game_data.h"
 #include "utils.h"
+#include "enemys.h"
 
 extern void handleGlutKeyboardFunc(unsigned char key, int x, int y);
 
@@ -97,7 +98,7 @@ void drawSun(int r,int x1, int y1)
 {			
    int x=0,y=r;
    glBegin(GL_POINTS);         // Each set of 4 vertices form a quad
-   glColor3f(1.0f, .3f, 0.0f); // Red
+   glColor3f(1.0f, 0.3f, 0.0f); // Red
    while(x<y)
    {
       if(((x+1)*(x+1) + (y-0.5)*(y-0.5) - r*r) < 0)
@@ -108,12 +109,13 @@ void drawSun(int r,int x1, int y1)
       }
       glVertex2i(x+x1,y+y1);
       glVertex2i(-x+x1,y+y1);
-      glVertex2i(x+x1,-y+y1);
-      glVertex2i(-x+x1,-y+y1);
       glVertex2i(y+x1,x+y1);
-      glVertex2i(y+x1,-x+y1);
       glVertex2i(-y+x1,x+y1);
-      glVertex2i(-y+x1,-x+y1);
+
+      // glVertex2i(y+x1,-x+y1);
+      // glVertex2i(x+x1,-y+y1);
+      // glVertex2i(-x+x1,-y+y1);
+      // glVertex2i(-y+x1,-x+y1);
    }
    glEnd();
 }
@@ -294,21 +296,24 @@ void drawWater()
 }
 
 void drawEnv()
-{
-    int i;
-    for(i=0;i<sunRadius;i++)
-       glColor3f(.3f, 0.0f, .0f);
-    glBegin(GL_POLYGON); 
-    glVertex2f(winXMin,winYMax);
-    glVertex2f(sceneX/4,sceneY);
-    glVertex2f(sceneX/2,winYMax);
-    glEnd();
+{  
+   int i;
+   for(i=1; i< sunRadius; i++)
+      drawSun(i ,sceneX/2,sceneY/2 - 200);
+   
+   glColor3f(.3f, 0.0f, .0f);
+   glBegin(GL_POLYGON); 
+   glVertex2f(winXMin,winYMax);
+   glVertex2f(sceneX/4,sceneY);
+   glVertex2f(sceneX/2,winYMax);
+   glEnd();
 
-    glBegin(GL_POLYGON); 
-    glVertex2f(sceneX/2,winYMax);
-    glVertex2f((sceneX/4)*3,sceneY);
-    glVertex2f(sceneX,winYMax);
-    glEnd();
+   glBegin(GL_POLYGON); 
+   glVertex2f(sceneX/2,winYMax);
+   glVertex2f((sceneX/4)*3,sceneY);
+   glVertex2f(sceneX,winYMax);
+   glEnd();
+
 }
 
 void drawSky()
