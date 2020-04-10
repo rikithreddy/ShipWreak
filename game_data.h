@@ -1,5 +1,5 @@
-#ifndef _GAME_DATA_H_
-#define _GAME_DATA_H_
+#ifndef GAME_DATA_H_
+#define GAME_DATA_H_
 
 
 int windowWidth  = 1300;     

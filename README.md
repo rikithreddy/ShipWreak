@@ -9,8 +9,10 @@ Escape the astroids falling on the ship and survive as long as possible.
 `sudo apt-get install freeglut3-dev`
 
 ## Compilation
-```
-gcc main.c utils.c opengl_funcs.c -lGL -lGLU -lglut -o shipwreak
-```
+`make all`
+
 ## Run the game
 `./shipwreak`
+
+## Clean binaries
+`make clean`

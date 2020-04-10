@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "game_data.h"
+#include "utils.h"
 
 extern void handleGlutKeyboardFunc(unsigned char key, int x, int y);
 
@@ -22,9 +23,9 @@ float bez(float u,int k)
 struct point sigmaG( float u)
 {
    struct point temp;
+   int z=0;
    temp.x=0;
    temp.y=0;
-   int sum,z=0;
    for(z=0;z<=points;z++)
    {
       temp.x+=p1[z].x*bez(u,z);
@@ -38,12 +39,11 @@ void drawSmoke()
    int u; 
    for(u=0;u<1000;u++)
    {
-   int sum=0;
-   struct point tem;
-   tem = sigmaG(u/1000.0);
-   glBegin(GL_POINTS); 
-   glVertex2f(tem.x,tem.y);
-   glEnd();
+      struct point tem;
+      tem = sigmaG(u/1000.0);
+      glBegin(GL_POINTS); 
+      glVertex2f(tem.x,tem.y);
+      glEnd();
    }
 }
 
@@ -93,9 +93,8 @@ void handleSpecialKeyReleased(int key, int x, int y) {
    }
 }
 
-float drawSun(int r,int x1, int y1)
+void drawSun(int r,int x1, int y1)
 {			
-   int i;
    int x=0,y=r;
    glBegin(GL_POINTS);         // Each set of 4 vertices form a quad
    glColor3f(1.0f, .3f, 0.0f); // Red
@@ -133,9 +132,8 @@ void moveEn()
    }
 }
 
-float drawShip(float x1, float y1)
+void drawShip(float x1, float y1)
 {			
-   float i;
 /*
    glBegin(GL_POLYGON);            
    glColor3f(1.0f, 0.8f, 1.0f); // Red
@@ -245,7 +243,7 @@ float drawShip(float x1, float y1)
    }
 }
 
-float drawEnemy()
+void drawEnemy()
 {			
    int i;
    for(i=0;i<numEnemys;i++)
@@ -361,7 +359,6 @@ void reshape(GLsizei width, GLsizei height) {
    if (height == 0)
       height = 1;                
 
-   GLfloat aspect = (GLfloat)width / (GLfloat)height;
    glMatrixMode(GL_PROJECTION);  // To operate on the Projection matrix
    gluOrtho2D(0, sceneX, 0 , sceneY);
 
