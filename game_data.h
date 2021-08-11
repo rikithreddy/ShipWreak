@@ -1,6 +1,7 @@
 #ifndef GAME_DATA_H_
 #define GAME_DATA_H_
 
+#define REFRESH_RATE 30  
 
 int windowWidth  = 1300;     
 int windowHeight = 700;    
@@ -38,7 +39,6 @@ int points=4;
 struct point p1[5],p2[5],p3[5];
 
 struct enemys en[100];
-int refreshMillis = 30;    
 int sink=0;
 
 #endif

@@ -367,7 +367,7 @@ void reshape(GLsizei width, GLsizei height) {
 /* Called back when the timer expired */
 void Timer(int value) {
    glutPostRedisplay();    // Post a paint request to activate display()
-   glutTimerFunc(refreshMillis, Timer, 0); // subsequent timer call at milliseconds
+   glutTimerFunc(REFRESH_RATE, Timer, 0); // subsequent timer call at milliseconds
 }
 
 int main(int argc, char** argv) {
@@ -377,7 +377,7 @@ int main(int argc, char** argv) {
    glutInitDisplayMode(GLUT_DOUBLE); // Enable double buffered mode
    glutInitWindowSize(windowWidth, windowHeight);  // Initial window width and height
    glutInitWindowPosition(windowPosX, windowPosY); // Initial window top-left corner (x, y)
-   glutCreateWindow("OpenGL Setup Test");      
+   glutCreateWindow("Ship Wreak");      
    glutSpecialFunc(handleSpecialKeypress);
    glutSpecialUpFunc(handleSpecialKeyReleased);
    glutKeyboardFunc(handleGlutKeyboardFunc);
